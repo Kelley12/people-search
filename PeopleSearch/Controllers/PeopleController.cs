@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,11 +51,6 @@ namespace PeopleSearch.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPerson([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var person = await _context.People.FindAsync(id);
 
             if (person == null)
@@ -70,11 +65,6 @@ namespace PeopleSearch.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPerson([FromRoute] int id, [FromBody] Person person)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (id != person.PersonId)
             {
                 return BadRequest();
@@ -105,11 +95,6 @@ namespace PeopleSearch.Controllers
         [HttpPost]
         public async Task<IActionResult> PostPerson([FromBody] Person person)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             _context.People.Add(person);
             await _context.SaveChangesAsync();
 
@@ -120,11 +105,6 @@ namespace PeopleSearch.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var person = await _context.People.FindAsync(id);
             if (person == null)
             {
