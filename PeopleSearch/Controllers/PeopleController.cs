@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,24 +27,18 @@ namespace PeopleSearch.Controllers
             return _context.People;
         }
 
-        // GET: api/People
-        [HttpGet("{id}")]
+        // POST: api/People/Search
+        [HttpPost("Search")]
         public async Task<IActionResult> GetPeople([FromBody] string searchString)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var people = await _context.People.ToListAsync();
+            var people = _context.People.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString))
-                            .ToList();
+                people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
             }
 
-            return Ok(people);
+            return Ok(await people.ToListAsync());
         }
 
         // GET: api/People/5
