@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
+import { PersonForm } from './PersonForm';
 
 export class AddPerson extends Component {
     state = { show: false };
@@ -21,11 +22,9 @@ export class AddPerson extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title>Add New Person</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>This should be a form</Modal.Body>
-                    <Modal.Footer>
-                        <button type="button" className="btn btn-secondary" onClick={this.hideModal}>Cancel</button>
-                        <button type="button" className="btn btn-primary" onClick={this.hideModal}>Create Person</button>
-                    </Modal.Footer>
+                    <Modal.Body>
+                        <PersonForm closeModal={this.hideModal} />
+                    </Modal.Body>
                 </Modal>
             </p>
         );
