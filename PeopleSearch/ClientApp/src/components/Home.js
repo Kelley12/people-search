@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AddPerson } from './AddPerson';
 
 export class Home extends Component {
     displayName = Home.name
@@ -67,6 +68,7 @@ export class Home extends Component {
         return (
             <div>
                 <h1>People</h1>
+                <AddPerson />
                 <input type="text" onChange={this.handleSearch} className="form-control" placeholder="Search..." />
                 {contents}
             </div>
