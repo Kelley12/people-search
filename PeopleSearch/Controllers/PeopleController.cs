@@ -36,11 +36,12 @@ namespace PeopleSearch.Controllers
                 return BadRequest(ModelState);
             }
 
-            var people = this.GetPeople();
+            var people = await _context.People.ToListAsync();
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
+                people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString))
+                            .ToList();
             }
 
             return Ok(people);
