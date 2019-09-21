@@ -48,7 +48,7 @@ export class Home extends Component {
 
         fetch('api/People/Search', {
             method: 'POST',
-            body: JSON.stringify({ searchString: e.target.value }),
+            body: JSON.stringify(e.target.value),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
