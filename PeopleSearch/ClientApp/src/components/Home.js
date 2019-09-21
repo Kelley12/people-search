@@ -12,6 +12,8 @@ export class Home extends Component {
             .then(data => {
                 this.setState({ people: data, loading: false });
             });
+
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     static renderPeopleTable(people) {
@@ -41,6 +43,22 @@ export class Home extends Component {
         );
     }
 
+    handleSearch(e) {
+        this.setState({ people: [], loading: true });
+
+        fetch('api/People/Search', {
+            method: 'POST',
+            body: JSON.stringify({ searchString: e.target.value }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ people: data, loading: false });
+            });
+    }
+
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
@@ -49,7 +67,7 @@ export class Home extends Component {
         return (
             <div>
                 <h1>People</h1>
-                <p>This component demonstrates fetching data from the server.</p>
+                <input type="text" onChange={this.handleSearch} className="form-control" placeholder="Search..." />
                 {contents}
             </div>
         );
