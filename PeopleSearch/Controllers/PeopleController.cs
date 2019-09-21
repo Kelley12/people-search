@@ -27,6 +27,25 @@ namespace PeopleSearch.Controllers
             return _context.People;
         }
 
+        // GET: api/People
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPeople([FromBody] string searchString)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var people = this.GetPeople();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
+            }
+
+            return Ok(people);
+        }
+
         // GET: api/People/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPerson([FromRoute] int id)
