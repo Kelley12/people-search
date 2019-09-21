@@ -15,7 +15,7 @@ namespace PeopleSearch.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(type: "varchar(50)", nullable: false),
                     LastName = table.Column<string>(type: "varchar(50)", nullable: false),
-                    address = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Address = table.Column<string>(type: "varchar(50)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Interests = table.Column<string>(type: "varchar(max)", nullable: true)
                 },

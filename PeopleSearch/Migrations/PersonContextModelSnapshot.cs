@@ -38,7 +38,7 @@ namespace PeopleSearch.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("address")
+                    b.Property<string>("Address")
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("PersonId");

@@ -18,7 +18,7 @@ namespace PeopleSearch.Models
         [Column(TypeName = "varchar(50)")]
         public string LastName { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public string address { get; set; }
+        public string Address { get; set; }
         [Column(TypeName = "int")]
         public int Age { get; set; }
         [Column(TypeName = "varchar(max)")]
