@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 
 export class PersonForm extends Component {
     constructor(props) {
@@ -16,12 +16,8 @@ export class PersonForm extends Component {
     }
 
     handleChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.id;
-
         this.setState({
-            [name]: value
+            [event.target.id]: event.target.value
         });
     }
 
