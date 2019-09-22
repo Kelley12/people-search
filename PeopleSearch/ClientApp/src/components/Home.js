@@ -64,7 +64,7 @@ export class Home extends Component {
 
     render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
+            ? <div className="container"><h1 className="loading">Loading...</h1></div>
             : Home.renderPeopleTable(this.state.people);
 
         return (

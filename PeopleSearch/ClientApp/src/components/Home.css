@@ -1,3 +1,7 @@
 ﻿.person-image {
     width: 75px;
 }
+
+.loading {
+    text-align: center;
+}
