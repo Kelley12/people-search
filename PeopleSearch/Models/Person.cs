@@ -19,7 +19,7 @@ namespace PeopleSearch.Models
         public int Age { get; set; }
         [Column(TypeName = "varchar(max)")]
         public string Interests { get; set; }
-        [Column(TypeName = "varbinary(max)")]
-        public byte[] Image { get; set; }
+        [Column(TypeName = "varchar(256)")]
+        public string ImagePath { get; set; }
     }
 }

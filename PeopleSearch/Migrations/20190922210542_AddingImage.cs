@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PeopleSearch.Migrations
 {
@@ -7,17 +6,17 @@ namespace PeopleSearch.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<byte[]>(
-                name: "Image",
+            migrationBuilder.AddColumn<string>(
+                name: "ImagePath",
                 table: "People",
-                type: "varbinary(max)",
+                type: "varchar(256)",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Image",
+                name: "ImagePath",
                 table: "People");
         }
     }
