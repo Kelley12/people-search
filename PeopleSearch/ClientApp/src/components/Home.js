@@ -65,6 +65,8 @@ export class Home extends Component {
     render() {
         let contents = this.state.loading
             ? <div className="container"><h1 className="loading">Loading...</h1></div>
+            : this.state.people.length < 1
+                ? <div className="container"><h1 className="loading">No results match your search</h1></div>
             : Home.renderPeopleTable(this.state.people);
 
         return (
