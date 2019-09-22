@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Home.css';
 
 export class Home extends Component {
     displayName = Home.name
@@ -21,6 +22,7 @@ export class Home extends Component {
             <table className='table'>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Age</th>
@@ -31,6 +33,7 @@ export class Home extends Component {
                 <tbody>
                     {people.map(person =>
                         <tr key={person.personId}>
+                            <td><img src="/default-picture.png" className="person-image" alt={person.firstName + " " + person.lastName} /></td>
                             <td>{person.firstName}</td>
                             <td>{person.lastName}</td>
                             <td>{person.age}</td>
