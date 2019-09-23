@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using PeopleSearch.Models;
+using PeopleSearch.Services;
 using System.IO;
 
 namespace PeopleSearch
@@ -27,6 +28,7 @@ namespace PeopleSearch
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<PersonContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddScoped<IPeopleService, PeopleService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
