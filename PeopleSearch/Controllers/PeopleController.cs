@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PeopleSearch.Controllers
@@ -38,6 +39,10 @@ namespace PeopleSearch.Controllers
             {
                 people = people.Where(s => s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
             }
+
+            // Simulate slow search results
+            Random random = new Random(); 
+            Thread.Sleep(random.Next(3000));
 
             return Ok(await people.ToListAsync());
         }
