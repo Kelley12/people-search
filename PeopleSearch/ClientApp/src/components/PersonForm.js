@@ -8,10 +8,12 @@ export class PersonForm extends Component {
             lastName: "",
             age: 0,
             address: "",
-            interests: ""
+            interests: "",
+            imagePath: "Resources\\Images\\default-picture.png"
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,6 +23,22 @@ export class PersonForm extends Component {
         });
     }
 
+    handleImageChange = (e) => {
+        var formData = new FormData();
+        formData.append('file', e.target.files[0], e.target.files[0].name);
+
+        fetch('api/People/Upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => {
+                this.setState({
+                    imagePath: res.dbPath
+                })
+            })
+            .then(() => console.log(this.state))
+            .catch(error => console.log(error));
+    }
     handleSubmit(event) {
         fetch('api/People', {
             method: 'POST',
