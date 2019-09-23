@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 
 export class PersonForm extends Component {
     constructor(props) {
@@ -9,7 +9,8 @@ export class PersonForm extends Component {
             age: 0,
             address: "",
             interests: "",
-            imagePath: "Resources\\Images\\default-picture.png"
+            imagePath: "Resources\\Images\\default-picture.png",
+            image: null
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,23 +24,34 @@ export class PersonForm extends Component {
         });
     }
 
-    handleImageChange = (e) => {
+    handleImageChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.files[0]
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        var file = this.state.image;
         var formData = new FormData();
-        formData.append('file', e.target.files[0], e.target.files[0].name);
+        formData.append('file', file, file.name);
 
         fetch('api/People/Upload', {
             method: 'POST',
             body: formData
         })
+            .then(res => res.json())
             .then(res => {
                 this.setState({
                     imagePath: res.dbPath
-                })
+                });
             })
-            .then(() => console.log(this.state))
+            .then(() => this.submitForm())
             .catch(error => console.log(error));
     }
-    handleSubmit(event) {
+
+    submitForm() {
         fetch('api/People', {
             method: 'POST',
             body: JSON.stringify(this.state),
@@ -47,8 +59,8 @@ export class PersonForm extends Component {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-            .then(_ => this.props.closeModal());
-        event.preventDefault();
+            .then(() => this.props.closeModal())
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -78,6 +90,11 @@ export class PersonForm extends Component {
                     <label htmlFor="interests">Interests</label>
                     <textarea type="text" id="interests" className="form-control"
                         value={this.state.interests} onChange={this.handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="images">Image</label>
+                    <input type="file" id="image" accept="image/png, image/jpeg"
+                        onChange={this.handleImageChange} />
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={this.hideModal}>Create Person</button>
             </form>

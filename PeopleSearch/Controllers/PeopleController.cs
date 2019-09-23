@@ -88,7 +88,7 @@ namespace PeopleSearch.Controllers
 
         // POST: api/People/Upload
         [HttpPost("Upload"), DisableRequestSizeLimit]
-        public IActionResult UploadImage()
+        public async Task<IActionResult> UploadImage()
         {
             try
             {
@@ -105,7 +105,7 @@ namespace PeopleSearch.Controllers
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        file.CopyTo(stream);
+                        await file.CopyToAsync(stream);
                     }
 
                     return Ok(new { dbPath });
