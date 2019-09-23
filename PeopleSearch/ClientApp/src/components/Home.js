@@ -33,9 +33,7 @@ export class Home extends Component {
                 <tbody>
                     {people.map(person =>
                         <tr key={person.personId}>
-                            <td><img src="/default-picture.png" className="person-image" alt={person.firstName + " " + person.lastName} /></td>
-                            <td>{person.firstName}</td>
-                            <td>{person.lastName}</td>
+                            <td><img src={person.imagePath ? person.imagePath : "Resources/Images/default-picture.png"} className="person-image" alt={person.firstName + " " + person.lastName} /></td>
                             <td>{person.age}</td>
                             <td>{person.address}</td>
                             <td>{person.interests}</td>
