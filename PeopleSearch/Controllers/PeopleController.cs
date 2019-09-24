@@ -32,48 +32,6 @@ namespace PeopleSearch.Controllers
             return Ok(_service.SearchPeople(searchString));
         }
 
-        // GET: api/People/5
-        [HttpGet("{id}")]
-        public IActionResult GetPerson([FromRoute] int id)
-        {
-            var person = _service.GetPerson(id);
-
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(person);
-        }
-
-        // PUT: api/People/5
-        [HttpPut("{id}")]
-        public IActionResult PutPerson([FromRoute] int id, [FromBody] Person person)
-        {
-            if (id != person.PersonId)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                _service.AddPerson(person);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_service.PersonExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/People/Upload
         [HttpPost("Upload"), DisableRequestSizeLimit]
         public IActionResult UploadImage()
@@ -107,21 +65,6 @@ namespace PeopleSearch.Controllers
             _service.AddPerson(person);
 
             return CreatedAtAction("GetPerson", new { id = person.PersonId }, person);
-        }
-
-        // DELETE: api/People/5
-        [HttpDelete("{id}")]
-        public IActionResult DeletePerson([FromRoute] int id)
-        {
-            var person = _service.GetPerson(id);
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            _service.DeletePerson(id);
-
-            return Ok(person);
         }
     }
 }

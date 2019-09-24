@@ -40,17 +40,6 @@ namespace PeopleSearch.Services
             return people.ToList();
         }
 
-        public Person GetPerson(int id)
-        {
-            return _context.People.Find(id);
-        }
-
-        public void EditPerson(Person person)
-        {
-            _context.Entry(person).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
         public Person AddPerson(Person person)
         {
             _context.People.Add(person);
@@ -73,19 +62,6 @@ namespace PeopleSearch.Services
             }
 
             return dbPath;
-        }
-
-        public Person DeletePerson(int id)
-        {
-            var person = _context.People.Find(id);
-            _context.People.Remove(person);
-            _context.SaveChanges();
-            return person;
-        }
-
-        public bool PersonExists(int id)
-        {
-            return _context.People.Any(e => e.PersonId == id);
         }
     }
 }

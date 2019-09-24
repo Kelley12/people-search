@@ -8,11 +8,7 @@ namespace PeopleSearch.Services
     {
         IEnumerable<Person> GetPeople();
         IEnumerable<Person> SearchPeople(string searchString);
-        Person GetPerson(int id);
-        void EditPerson(Person person);
         Person AddPerson(Person person);
         string SavePicture(IFormFile file, string folder);
-        Person DeletePerson(int id);
-        bool PersonExists(int id);
     }
 }
