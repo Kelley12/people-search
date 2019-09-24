@@ -33,21 +33,21 @@ export class Home extends Component {
                 <tbody>
                     {people.map(person =>
                         <tr key={person.personId}>
-                            <div class="card mb-3" style="max-width: 1200px;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-2">
+                            <div className="card mb-3 person-card">
+                                <div className="row no-gutters">
+                                    <div className="col-md-2">
                                         <img src={person.imagePath ? person.imagePath : "Resources/Images/default-picture.png"} className="person-image" alt={person.firstName + " " + person.lastName} />
                                     </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <h5 class="card-title">{person.firstName + " " + person.lastName}</h5>
-                                                    <p class="card-text"><h6>Age <small class="text-muted">{person.age}</small></h6></p>
-                                                    <p class="card-text"><h6>Address <small class="text-muted">{person.address}</small></h6></p>
+                                    <div className="col-md-10">
+                                        <div className="card-body">
+                                            <div className="row">
+                                                <div className="col-md-8">
+                                                    <h5 className="card-title">{person.firstName + " " + person.lastName}</h5>
+                                                    <p className="card-text"><h6>Age <small className="text-muted">{person.age}</small></h6></p>
+                                                    <p className="card-text"><h6>Address <small className="text-muted">{person.address}</small></h6></p>
                                                 </div>
-                                                <div class="col-md-4">
-                                                <p class="card-text"><h6>Interests <small class="text-muted">{person.interests}</small></h6></p>
+                                                <div className="col-md-4">
+                                                <p className="card-text"><h6>Interests <small className="text-muted">{person.interests}</small></h6></p>
                                                 </div>
                                             </div>
                                         </div>
