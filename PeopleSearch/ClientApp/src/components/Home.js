@@ -23,11 +23,6 @@ export class Home extends Component {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        <th>Interests</th>
                     </tr>
                 </thead>
                 <tbody>
