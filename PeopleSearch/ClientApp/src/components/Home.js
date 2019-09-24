@@ -38,12 +38,12 @@ export class Home extends Component {
                                             <div className="card-body">
                                                 <div className="row">
                                                     <div className="col-md-8">
-                                                        <h5 className="card-title">{person.firstName + " " + person.lastName}</h5>
+                                                        <h3 className="card-title">{person.firstName + " " + person.lastName}</h3>
                                                         <p className="card-text"><strong>Age</strong> <small className="text-muted">{person.age}</small></p>
                                                         <p className="card-text"><strong>Address</strong> <small className="text-muted">{person.address}</small></p>
                                                     </div>
                                                     <div className="col-md-4">
-                                                        <p className="card-text"><strong>Interests</strong> <small className="text-muted">{person.interests}</small></p>
+                                                        <p className="card-text card-interests"><strong>Interests</strong> <small className="text-muted">{person.interests}</small></p>
                                                     </div>
                                                 </div>
                                             </div>
