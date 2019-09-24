@@ -16,7 +16,7 @@ export class AddPerson extends Component {
     render() {
         return (
             <p>
-                <button type="button" className="btn btn-secondary" onClick={this.showModal}>Add Person</button>
+                <button type="button" className="btn btn-secondary add-button" onClick={this.showModal}>Add Person</button>
 
                 <Modal show={this.state.show} onHide={this.hideModal}>
                     <Modal.Header closeButton>
