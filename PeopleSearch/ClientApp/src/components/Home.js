@@ -33,10 +33,27 @@ export class Home extends Component {
                 <tbody>
                     {people.map(person =>
                         <tr key={person.personId}>
-                            <td><img src={person.imagePath ? person.imagePath : "Resources/Images/default-picture.png"} className="person-image" alt={person.firstName + " " + person.lastName} /></td>
-                            <td>{person.age}</td>
-                            <td>{person.address}</td>
-                            <td>{person.interests}</td>
+                            <div class="card mb-3" style="max-width: 1200px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-2">
+                                        <img src={person.imagePath ? person.imagePath : "Resources/Images/default-picture.png"} className="person-image" alt={person.firstName + " " + person.lastName} />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5 class="card-title">{person.firstName + " " + person.lastName}</h5>
+                                                    <p class="card-text"><h6>Age <small class="text-muted">{person.age}</small></h6></p>
+                                                    <p class="card-text"><h6>Address <small class="text-muted">{person.address}</small></h6></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <p class="card-text"><h6>Interests <small class="text-muted">{person.interests}</small></h6></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                     )}
                 </tbody>
